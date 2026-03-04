@@ -1,0 +1,51 @@
+{
+  "projectType": "general",
+  "projectName": "Rust Lab",
+  "projectDescription": "A collection of Rust learning projects covering fundamental concepts like ownership, data types, and practical applications.",
+  "theme": "aspen",
+  "primaryColor": "#CE422B",
+  "lightColor": "#F74C00",
+  "darkColor": "#A33E2C",
+  "navigation": {
+    "groups": [
+      {
+        "group": "Get Started",
+        "pages": [
+          "introduction",
+          "quickstart"
+        ]
+      },
+      {
+        "group": "Core Concepts",
+        "pages": [
+          "concepts/ownership",
+          "concepts/data-types"
+        ]
+      },
+      {
+        "group": "Projects",
+        "pages": [
+          "projects/rock-paper-scissors"
+        ]
+      },
+      {
+        "group": "Resources",
+        "pages": [
+          "resources/learning-path",
+          "resources/references"
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Ownership and borrowing demonstrations",
+    "Comprehensive data types examples",
+    "Interactive CLI game project",
+    "Hands-on Rust learning exercises"
+  ],
+  "publicApiSurface": [
+    "00-ownership: Ownership and move semantics examples",
+    "01-datatypes: String types, integers, floats, chars, tuples, arrays, and parsing",
+    "02-rock_paper_scissors: Interactive Rock-Paper-Scissors game with user input and random number generation"
+  ]
+}
