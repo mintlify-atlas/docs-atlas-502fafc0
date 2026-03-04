@@ -1,0 +1,274 @@
+---
+title: 'References & Resources'
+description: 'Essential Rust learning materials, documentation, and tools'
+---
+
+## Official Documentation
+
+<CardGroup cols={2}>
+  <Card title="The Rust Programming Language" icon="book" href="https://doc.rust-lang.org/book/">
+    The official Rust book - comprehensive and beginner-friendly. Known as "the book" in the Rust community.
+  </Card>
+  
+  <Card title="Rust by Example" icon="code" href="https://doc.rust-lang.org/rust-by-example/">
+    Learn Rust through runnable examples covering all major language features.
+  </Card>
+  
+  <Card title="Standard Library Documentation" icon="library" href="https://doc.rust-lang.org/std/">
+    Complete API documentation for Rust's standard library with examples.
+  </Card>
+  
+  <Card title="Rust Reference" icon="book-open" href="https://doc.rust-lang.org/reference/">
+    Detailed technical reference for the Rust language specification.
+  </Card>
+</CardGroup>
+
+## Concept-Specific Resources
+
+### Ownership and Borrowing
+
+<CardGroup cols={2}>
+  <Card title="Understanding Ownership" href="https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html">
+    Chapter 4 of The Rust Book - deep dive into ownership, borrowing, and slices.
+  </Card>
+  
+  <Card title="Visualizing Memory Layout" href="https://doc.rust-lang.org/nomicon/">
+    The Rustonomicon - advanced topics including memory layout and unsafe code.
+  </Card>
+</CardGroup>
+
+### Types and Patterns
+
+<CardGroup cols={2}>
+  <Card title="Common Collections" href="https://doc.rust-lang.org/book/ch08-00-common-collections.html">
+    Working with Vec, String, HashMap, and other standard collections.
+  </Card>
+  
+  <Card title="Enums and Pattern Matching" href="https://doc.rust-lang.org/book/ch06-00-enums.html">
+    Comprehensive guide to enums, Option, Result, and match expressions.
+  </Card>
+</CardGroup>
+
+### Error Handling
+
+<CardGroup cols={2}>
+  <Card title="Error Handling" href="https://doc.rust-lang.org/book/ch09-00-error-handling.html">
+    Understanding panic!, Result, and error propagation with the ? operator.
+  </Card>
+  
+  <Card title="Error Handling in Depth" href="https://doc.rust-lang.org/rust-by-example/error.html">
+    Practical examples of error handling patterns in Rust.
+  </Card>
+</CardGroup>
+
+## Interactive Learning
+
+<CardGroup cols={2}>
+  <Card title="Rustlings" icon="graduation-cap" href="https://github.com/rust-lang/rustlings">
+    Small exercises to get you used to reading and writing Rust code. Install and practice locally.
+  </Card>
+  
+  <Card title="Rust Playground" icon="play" href="https://play.rust-lang.org/">
+    Online Rust compiler - test code snippets without installing anything.
+  </Card>
+  
+  <Card title="Exercism Rust Track" icon="dumbbell" href="https://exercism.org/tracks/rust">
+    100+ coding exercises with mentorship from experienced Rust developers.
+  </Card>
+  
+  <Card title="Advent of Code in Rust" icon="calendar" href="https://adventofcode.com/">
+    Solve programming puzzles in Rust - great for practice and learning.
+  </Card>
+</CardGroup>
+
+## Essential Tools
+
+### Development Tools
+
+<Card title="rustup" icon="download" href="https://rustup.rs/">
+  The Rust toolchain installer. Manages Rust versions, targets, and components.
+  
+  ```bash
+  # Install rustup
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  
+  # Update Rust
+  rustup update
+  
+  # Check version
+  rustc --version
+  ```
+</Card>
+
+<Card title="cargo" icon="box" href="https://doc.rust-lang.org/cargo/">
+  Rust's build system and package manager. Included with rustup.
+  
+  ```bash
+  # Create new project
+  cargo new my_project
+  
+  # Build project
+  cargo build
+  
+  # Run project
+  cargo run
+  
+  # Run tests
+  cargo test
+  ```
+</Card>
+
+### Code Quality Tools
+
+<CardGroup cols={2}>
+  <Card title="Clippy" href="https://github.com/rust-lang/rust-clippy">
+    A linter to catch common mistakes and improve your Rust code.
+    
+    ```bash
+    # Install
+    rustup component add clippy
+    
+    # Run
+    cargo clippy
+    ```
+  </Card>
+  
+  <Card title="rustfmt" href="https://github.com/rust-lang/rustfmt">
+    Automatic code formatter following Rust style guidelines.
+    
+    ```bash
+    # Install
+    rustup component add rustfmt
+    
+    # Format code
+    cargo fmt
+    ```
+  </Card>
+</CardGroup>
+
+### Documentation Tools
+
+<Card title="cargo doc" href="https://doc.rust-lang.org/rustdoc/">
+  Generate documentation for your project and dependencies.
+  
+  ```bash
+  # Generate and open documentation
+  cargo doc --open
+  
+  # Include private items
+  cargo doc --document-private-items
+  ```
+</Card>
+
+## Video Courses and Tutorials
+
+<Note>
+  Video content can complement written documentation. These resources are highly recommended by the community.
+</Note>
+
+- **[Rust Programming Course](https://www.youtube.com/watch?v=MsocPEZBd-M)** - freeCodeCamp's comprehensive video tutorial
+- **[Crust of Rust](https://www.youtube.com/playlist?list=PLqbS7AVVErFiWDOAVrPt7aYmnuuOLYvOa)** - Jon Gjengset's deep dives into Rust concepts
+- **[Rust Crash Course](https://www.youtube.com/watch?v=zF34dRivLOw)** - Traversy Media's quick introduction
+
+## Community Resources
+
+<CardGroup cols={2}>
+  <Card title="Rust Users Forum" icon="comments" href="https://users.rust-lang.org/">
+    Ask questions, share projects, and discuss Rust with the community.
+  </Card>
+  
+  <Card title="r/rust" icon="reddit" href="https://reddit.com/r/rust">
+    Reddit's Rust community - news, discussions, and weekly Q&A threads.
+  </Card>
+  
+  <Card title="Rust Discord" icon="discord" href="https://discord.gg/rust-lang">
+    Real-time chat with thousands of Rust developers. Great for quick questions.
+  </Card>
+  
+  <Card title="This Week in Rust" icon="newspaper" href="https://this-week-in-rust.org/">
+    Weekly newsletter covering Rust news, articles, and jobs.
+  </Card>
+</CardGroup>
+
+## Books and In-Depth Guides
+
+### Recommended Books
+
+<Accordion title="Programming Rust (O'Reilly)">
+  Comprehensive guide covering systems programming with Rust. Best for developers with prior programming experience.
+  
+  - Deep technical coverage
+  - Real-world examples
+  - Advanced topics like concurrency and unsafe code
+</Accordion>
+
+<Accordion title="Rust in Action (Manning)">
+  Learn Rust through hands-on systems programming projects.
+  
+  - Project-based learning
+  - Focus on practical applications
+  - Great for understanding low-level concepts
+</Accordion>
+
+<Accordion title="Zero To Production In Rust">
+  Build production-ready web applications with Rust.
+  
+  - Backend web development
+  - Testing and CI/CD
+  - Real-world architecture patterns
+  
+  Available at [zero2prod.com](https://www.zero2prod.com/)
+</Accordion>
+
+## Specialized Topics
+
+<CardGroup cols={2}>
+  <Card title="Async Programming" href="https://rust-lang.github.io/async-book/">
+    Learn asynchronous programming with async/await syntax.
+  </Card>
+  
+  <Card title="WebAssembly" href="https://rustwasm.github.io/docs/book/">
+    Compile Rust to WebAssembly for web applications.
+  </Card>
+  
+  <Card title="Embedded Rust" href="https://docs.rust-embedded.org/book/">
+    Program microcontrollers and embedded systems with Rust.
+  </Card>
+  
+  <Card title="Command Line Apps" href="https://rust-cli.github.io/book/">
+    Build powerful and user-friendly CLI tools.
+  </Card>
+</CardGroup>
+
+## Cheat Sheets and Quick References
+
+<CardGroup cols={2}>
+  <Card title="Rust Language Cheat Sheet" href="https://cheats.rs/">
+    Quick reference for Rust syntax, types, and common patterns.
+  </Card>
+  
+  <Card title="Rust Iterator Cheat Sheet" href="https://danielkeep.github.io/itercheat_baked.html">
+    Visual guide to iterator methods and adapters.
+  </Card>
+</CardGroup>
+
+## Package Registry
+
+<Card title="crates.io" icon="box" href="https://crates.io/">
+  The official Rust package registry. Search for libraries (called "crates") to use in your projects.
+  
+  **Popular crates:**
+  - `serde` - Serialization/deserialization framework
+  - `tokio` - Async runtime for I/O operations
+  - `clap` - Command-line argument parser
+  - `reqwest` - HTTP client
+  - `axum` - Web framework
+</Card>
+
+<Note>
+  Bookmark the resources most relevant to your current learning stage. Don't try to consume everything at once!
+</Note>
+
+<Card title="Back to Learning Path" icon="arrow-left" href="/resources/learning-path">
+  Return to the recommended learning sequence
+</Card>

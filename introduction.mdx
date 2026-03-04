@@ -1,0 +1,132 @@
+---
+title: 'Welcome to Rust Lab'
+description: 'Learn Rust programming through hands-on projects covering ownership, data types, and practical applications'
+---
+
+## What is Rust Lab?
+
+Rust Lab is a curated collection of hands-on projects designed to help you master fundamental Rust programming concepts. Whether you're new to Rust or looking to solidify your understanding of its core principles, these projects will guide you through the language's unique features with practical, runnable examples.
+
+<Note>
+  Each project in Rust Lab is self-contained and focuses on specific concepts, making it easy to learn at your own pace.
+</Note>
+
+## What You'll Learn
+
+Through three progressively challenging projects, you'll explore:
+
+<CardGroup cols={3}>
+  <Card title="Ownership" icon="key">
+    Master Rust's revolutionary ownership system, including move semantics and cloning
+  </Card>
+  <Card title="Data Types" icon="hashtag">
+    Work with Rust's rich type system, from primitives to complex structures
+  </Card>
+  <Card title="Real Projects" icon="gamepad">
+    Build practical applications that combine multiple concepts
+  </Card>
+</CardGroup>
+
+## The Projects
+
+### Project 0: Ownership Fundamentals
+
+**Location:** `00-ownership`
+
+Dive into Rust's ownership system, the feature that makes Rust memory-safe without garbage collection. This project demonstrates:
+
+- How ownership transfers when values are moved
+- Why borrowed values become unavailable after a move
+- Using `.clone()` to explicitly copy data
+- Understanding compile-time memory safety
+
+<Tip>
+  Ownership is Rust's most distinctive feature. Understanding it early will make everything else click into place.
+</Tip>
+
+### Project 1: Data Types Deep Dive
+
+**Location:** `01-datatypes`
+
+Explore Rust's comprehensive type system through practical examples. You'll work with:
+
+- String types: `&str` (string slices) vs `String` (owned strings)
+- Integer types: signed (`i8`, `i16`, `i32`) and unsigned (`u8`, `u16`, `u32`)
+- Floating-point numbers: `f32` and `f64`
+- Characters and Unicode: including emoji support 🦀
+- Compound types: tuples and arrays
+- Type parsing and conversions
+
+### Project 2: Rock, Paper, Scissors Game
+
+**Location:** `02-rock_paper_scissors`
+
+Put your knowledge into practice by building an interactive command-line game. This project combines:
+
+- User input handling with `std::io`
+- Random number generation with the `rand` crate
+- Pattern matching for game logic
+- Function design and references
+- Control flow with loops and conditionals
+- Error handling with `Result` and `unwrap_or_else`
+
+<CodeGroup>
+
+```rust Game Preview
+Please Enter a number
+1 for 🗿 Rock!
+2 for 📄 Paper!
+3 for ✂️  Scissors!
+> 1
+Victory — your move beats the computer. computer chose ✂️ Scissors
+```
+
+</CodeGroup>
+
+## Learning Path
+
+<Steps>
+  <Step title="Start with the Quickstart">
+    Follow our [quickstart guide](/quickstart) to set up your environment and run your first project
+  </Step>
+  
+  <Step title="Master Ownership">
+    Work through the ownership project to understand Rust's memory model
+  </Step>
+  
+  <Step title="Learn Data Types">
+    Explore Rust's type system and see how type safety prevents bugs
+  </Step>
+  
+  <Step title="Build Something Fun">
+    Apply your knowledge by completing the Rock, Paper, Scissors game
+  </Step>
+</Steps>
+
+## Why Rust?
+
+Rust combines low-level control with high-level ergonomics. It's designed to help you write fast, reliable software without sacrificing safety. These projects will show you:
+
+- **Memory Safety**: No null pointers, no dangling references, no data races
+- **Zero-Cost Abstractions**: High-level features that compile to efficient machine code
+- **Fearless Concurrency**: Write parallel code without worrying about race conditions
+- **Rich Type System**: Catch errors at compile time instead of runtime
+
+<Note>
+  Rust has a learning curve, but the compiler is incredibly helpful. It doesn't just tell you what's wrong—it explains why and how to fix it.
+</Note>
+
+## Ready to Begin?
+
+Head over to the [Quickstart Guide](/quickstart) to install Rust and run your first project in minutes.
+
+If you want to dive deeper into specific concepts, check out our concept guides:
+- [Understanding Ownership](#) - Deep dive into Rust's ownership model
+- [Type System Guide](#) - Comprehensive coverage of Rust types
+- [Pattern Matching](#) - Master Rust's powerful matching syntax
+
+---
+
+<Tip>
+  The best way to learn Rust is by writing code. Don't just read these projects—run them, modify them, break them, and fix them!
+</Tip>

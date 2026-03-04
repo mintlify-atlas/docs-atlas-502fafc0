@@ -1,80 +1,263 @@
 ---
-title: "Quickstart"
-description: "Start building awesome documentation in minutes"
+title: 'Quickstart Guide'
+description: 'Get up and running with Rust Lab in minutes'
 ---
 
-## Get started in three steps
+## Prerequisites
 
-Get your documentation site running locally and make your first customization.
+Before you begin, you'll need to install Rust on your system.
 
-### Step 1: Set up your local environment
-
-<AccordionGroup>
-  <Accordion icon="copy" title="Clone your docs locally">
-    During the onboarding process, you created a GitHub repository with your docs content if you didn't already have one. You can find a link to this repository in your [dashboard](https://dashboard.mintlify.com).
+<Tabs>
+  <Tab title="macOS / Linux">
+    Install Rust using rustup, the official Rust installer:
     
-    To clone the repository locally so that you can make and preview changes to your docs, follow the [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) guide in the GitHub docs.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Start the preview server">
-    1. Install the Mintlify CLI: `npm i -g mint`
-    2. Navigate to your docs directory and run: `mint dev`
-    3. Open `http://localhost:3000` to see your docs live!
+    ```bash
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    ```
     
-    <Tip>Your preview updates automatically as you edit files.</Tip>
-  </Accordion>
-</AccordionGroup>
-
-### Step 2: Deploy your changes
-
-<AccordionGroup>
-  <Accordion icon="github" title="Install our GitHub app">
-    Install the Mintlify GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app).
+    Follow the on-screen instructions. After installation, restart your terminal or run:
     
-    Our GitHub app automatically deploys your changes to your docs site, so you don't need to manage deployments yourself.
-</Accordion>
-<Accordion icon="palette" title="Update your site name and colors">
-    For a first change, let's update the name and colors of your docs site.
+    ```bash
+    source $HOME/.cargo/env
+    ```
+  </Tab>
+  
+  <Tab title="Windows">
+    Download and run the installer from [rustup.rs](https://rustup.rs).
+    
+    Alternatively, if you have `winget`:
+    
+    ```powershell
+    winget install Rustlang.Rustup
+    ```
+    
+    Restart your terminal after installation.
+  </Tab>
+</Tabs>
 
-    1. Open `docs.json` in your editor.
-    2. Change the `"name"` field to your project name.
-    3. Update the `"colors"` to match your brand.
-    4. Save and see your changes instantly at `http://localhost:3000`.
+### Verify Installation
 
-    <Tip>Try changing the primary color to see an immediate difference!</Tip>
-  </Accordion>
-</AccordionGroup>
+Check that Rust is installed correctly:
 
-### Step 3: Go live
+```bash
+rustc --version
+cargo --version
+```
 
-<Accordion icon="rocket" title="Publish your docs">
-  1. Commit and push your changes.
-  2. Your docs will update and be live in moments!
-</Accordion>
+You should see version information for both the Rust compiler and Cargo (Rust's package manager).
 
-## Next steps
+<Note>
+  If you already have Rust installed, make sure it's up to date: `rustup update`
+</Note>
 
-Now that you have your docs running, explore these key features:
+## Clone the Repository
+
+Get the Rust Lab code on your machine:
+
+```bash
+git clone https://github.com/Ghostmaysam1/rust-lab.git
+cd rust-lab
+```
+
+## Project Structure
+
+The repository contains three learning projects:
+
+```
+rust-lab/
+├── 00-ownership/          # Ownership and move semantics
+│   ├── Cargo.toml
+│   └── src/
+│       └── main.rs
+├── 01-datatypes/          # Data types and type system
+│   ├── Cargo.toml
+│   └── src/
+│       └── main.rs
+└── 02-rock_paper_scissors/  # Interactive CLI game
+    ├── Cargo.toml
+    └── src/
+        └── main.rs
+```
+
+## Run Your First Project
+
+Let's start with the ownership project to understand Rust's most distinctive feature.
+
+<Steps>
+  <Step title="Navigate to the project">
+    ```bash
+    cd 00-ownership
+    ```
+  </Step>
+  
+  <Step title="Run the project">
+    Use Cargo to compile and run the code:
+    
+    ```bash
+    cargo run
+    ```
+    
+    You'll see output demonstrating ownership and cloning:
+    
+    ```
+    (L-3) my name is Maysam
+    (L-8) my name from new variable: Maysam
+    (L-15) I can use my_name here: Maysam
+    ```
+  </Step>
+  
+  <Step title="Examine the code">
+    Open `src/main.rs` to see how the code works:
+    
+    ```rust
+    let my_name = String::from("Maysam");
+    println!("(L-3) my name is {my_name}");
+
+    let new_variable = my_name;
+    // my_name.push_str("hi_name"); // can't use my_name here!, value moved
+    println!("(L-8) my name from new variable: {new_variable}");
+    ```
+    
+    Notice how `my_name` becomes unavailable after moving to `new_variable`. This is Rust's ownership system in action!
+  </Step>
+</Steps>
+
+### Why This Matters
+
+The ownership project demonstrates Rust's memory safety without garbage collection:
+
+- **Line 2-3**: `my_name` owns the string "Maysam"
+- **Line 5**: Ownership moves to `new_variable`
+- **Lines 6-7**: Attempting to use `my_name` would cause a compile error
+- **Line 12-15**: Using `.clone()` creates a copy, allowing both variables to be used
+
+<Tip>
+  Try uncommenting lines 6 or 7 and running `cargo run` again. The compiler will explain why the code is invalid!
+</Tip>
+
+## Explore the Other Projects
+
+### Data Types Project
+
+Navigate to the data types project and run it:
+
+```bash
+cd ../01-datatypes
+cargo run
+```
+
+This project demonstrates Rust's type system, including:
+- String types (`&str` vs `String`)
+- Integer types (signed and unsigned)
+- Floating-point numbers
+- Characters (including emoji! 🦀)
+- Tuples and arrays
+- Type parsing
+
+### Rock Paper Scissors Game
+
+Try the interactive game:
+
+```bash
+cd ../02-rock_paper_scissors
+cargo run
+```
+
+Follow the prompts to play Rock, Paper, Scissors against the computer:
+
+```
+Please Enter a number
+1 for 🗿 Rock!
+2 for 📄 Paper!
+3 for ✂️  Scissors!
+> 1
+Victory — your move beats the computer. computer chose ✂️ Scissors
+```
+
+Type `exit` to quit the game.
+
+## Experiment with the Code
+
+The best way to learn is by modifying the code:
 
 <CardGroup cols={2}>
+  <Card title="Change the Values" icon="pencil">
+    Modify strings, numbers, or game messages to see how Rust handles changes
+  </Card>
+  
+  <Card title="Break Things" icon="hammer">
+    Intentionally introduce errors to learn from compiler messages
+  </Card>
+  
+  <Card title="Add Features" icon="plus">
+    Extend the Rock Paper Scissors game with score tracking or new options
+  </Card>
+  
+  <Card title="Explore Types" icon="magnifying-glass">
+    Try different data types in the datatypes project
+  </Card>
+</CardGroup>
 
-<Card title="Write Content" icon="pen-to-square" href="/essentials/markdown">
-  Learn MDX syntax and start writing your documentation.
-</Card>
+## Essential Commands
 
-<Card title="Customize style" icon="palette" href="/essentials/settings">
-  Make your docs match your brand perfectly.
-</Card>
+Here are the Cargo commands you'll use frequently:
 
-<Card title="Add code examples" icon="square-code" href="/essentials/code">
-  Include syntax-highlighted code blocks.
-</Card>
+| Command | Description |
+|---------|-------------|
+| `cargo run` | Compile and run the project |
+| `cargo build` | Compile without running |
+| `cargo build --release` | Build optimized release version |
+| `cargo check` | Check for errors without building |
+| `cargo clean` | Remove build artifacts |
 
-<Card title="API documentation" icon="code" href="/api-reference/introduction">
-  Auto-generate API docs from OpenAPI specs.
-</Card>
+## Troubleshooting
 
+<AccordionGroup>
+  <Accordion title="Rust command not found">
+    Make sure Rust is in your PATH. Restart your terminal or manually source the environment:
+    
+    ```bash
+    source $HOME/.cargo/env
+    ```
+  </Accordion>
+  
+  <Accordion title="Compilation errors">
+    Rust's compiler errors are very descriptive. Read them carefully—they often include suggestions for fixing the issue.
+    
+    If you're stuck, try copying the error message into a search engine or asking on the [Rust Users Forum](https://users.rust-lang.org/).
+  </Accordion>
+  
+  <Accordion title="Edition errors">
+    The projects use Rust edition 2024. Make sure your Rust installation is up to date:
+    
+    ```bash
+    rustup update
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## Next Steps
+
+Now that you've run the projects, dive deeper into the concepts:
+
+<CardGroup cols={2}>
+  <Card title="Ownership Concepts" icon="lock" href="/concepts/ownership">
+    Deep dive into Rust's ownership system
+  </Card>
+  
+  <Card title="Data Types Guide" icon="database" href="/concepts/data-types">
+    Comprehensive type system reference
+  </Card>
+  
+  <Card title="Learning Path" icon="map" href="/resources/learning-path">
+    Structured approach to mastering these projects
+  </Card>
+  
+  <Card title="External Resources" icon="book" href="/resources/references">
+    Books, courses, and community links
+  </Card>
 </CardGroup>
 
 <Note>
-  **Need help?** See our [full documentation](https://mintlify.com/docs) or join our [community](https://mintlify.com/community).
+  Remember: the Rust compiler is your friend! Its error messages are designed to teach you. Read them carefully and you'll learn faster.
 </Note>

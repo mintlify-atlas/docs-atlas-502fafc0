@@ -1,0 +1,270 @@
+---
+title: 'Data Types'
+description: 'Comprehensive guide to Rust data types including strings, numbers, chars, tuples, and arrays'
+---
+
+# Data Types in Rust
+
+Rust is a statically typed language, which means the compiler must know the types of all variables at compile time. Let's explore the fundamental data types in Rust.
+
+## String Types
+
+Rust has two main string types, each serving different purposes:
+
+<CodeGroup>
+```rust &str (String Slice)
+// &str - immutable string slice
+// literal string stored in the binary
+let _str: &str = "Hello, World!";
+```
+
+```rust String (Owned String)
+// String - growable, heap-allocated string
+// mutable and owns its data
+let _string: String = String::from("Hello, World!");
+```
+</CodeGroup>
+
+<Note>
+**Key Difference:** `&str` is a reference to string data (borrowed), while `String` owns the string data and can be modified. `&str` is stored on the stack, `String` is stored on the heap.
+</Note>
+
+## Integer Types
+
+Rust provides both signed and unsigned integers in various sizes:
+
+### Signed Integers (i8, i16, i32, i64, i128)
+
+```rust
+use std::{i8, i16, i32};
+
+let _i8: i8 = i8::MAX;      // -128 to 127
+let _i16: i16 = i16::MAX;   // -32,768 to 32,767
+let _i32: i32 = i32::MAX;   // -2,147,483,648 to 2,147,483,647
+```
+
+### Unsigned Integers (u8, u16, u32, u64, u128)
+
+```rust
+use std::{u8, u16, u32};
+
+let _u8: u8 = u8::MAX;      // 0 to 255
+let _u16: u16 = u16::MAX;   // 0 to 65,535
+let _u32: u32 = u32::MAX;   // 0 to 4,294,967,295
+```
+
+<Accordion title="Integer Type Ranges">
+| Type | Signed Range | Unsigned Range |
+|------|--------------|----------------|
+| 8-bit | -128 to 127 | 0 to 255 |
+| 16-bit | -32,768 to 32,767 | 0 to 65,535 |
+| 32-bit | -2,147,483,648 to 2,147,483,647 | 0 to 4,294,967,295 |
+| 64-bit | -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 | 0 to 18,446,744,073,709,551,615 |
+</Accordion>
+
+<Tip>
+**Default integer type:** When you don't specify a type, Rust defaults to `i32`, which is generally the fastest even on 64-bit systems.
+</Tip>
+
+## Floating-Point Types
+
+Rust has two floating-point types for decimal numbers:
+
+```rust
+use std::{f32, f64};
+
+let _f32: f32 = f32::MAX;   // 32-bit floating point
+let _f64: f64 = f64::MAX;   // 64-bit floating point (default)
+```
+
+<Note>
+`f64` is the default floating-point type because on modern CPUs, it's roughly the same speed as `f32` but with more precision.
+</Note>
+
+## Character Type
+
+The `char` type represents a single Unicode scalar value:
+
+```rust
+// char - Unicode character (4 bytes)
+// only use single quotes ''
+let _ch: char = 'A';
+let _emoji: char = '🦀';
+let _number: char = '1';
+let _ch2: char = 'ℤ';
+```
+
+<Warning>
+Characters in Rust must use single quotes `'`. Double quotes `"` are for string literals only.
+</Warning>
+
+<Tip>
+Rust's `char` type is 4 bytes and can represent any Unicode character, including emojis, mathematical symbols, and characters from any language!
+</Tip>
+
+## Compound Types
+
+### Tuples
+
+Tuples group multiple values of different types into one compound type:
+
+```rust
+// tuple - fixed-size collection of different types
+let _tuple: (i32, String, char) = (42, String::from("Hello, World!"), 'ℤ');
+
+// destructuring
+let (_x, _y, _z) = _tuple;
+
+// accessing by index
+let _n: i32 = _tuple.0;
+```
+
+<Steps>
+  <Step title="Create a tuple">
+    Group values of different types together: `(i32, String, char)`
+  </Step>
+  
+  <Step title="Access elements">
+    Use destructuring `let (x, y, z) = tuple;` or index access `tuple.0`
+  </Step>
+  
+  <Step title="Fixed size">
+    Once declared, tuples cannot grow or shrink in size
+  </Step>
+</Steps>
+
+### Arrays
+
+Arrays are fixed-size collections of elements of the same type:
+
+```rust
+// array - fixed-size, same type elements
+let _array: [i32; 5] = [1, 2, 3, 4, 5];
+
+// initialize with same value
+let _array2: [i32; 10] = [5; 10];  // [5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
+
+// accessing elements
+let _five: i32 = _array2[0];
+```
+
+<Note>
+Array syntax: `[type; size]` where `type` is the element type and `size` is the number of elements.
+
+The syntax `[value; size]` creates an array with `size` elements, all set to `value`.
+</Note>
+
+## Type Conversion and Parsing
+
+Converting between types is a common operation in Rust:
+
+```rust
+// parse string to integer
+let _my_string: String = String::from("12");
+let _my_integer: i32 = _my_string
+    .trim()
+    .parse()
+    .expect("the string is not a number");
+```
+
+<Steps>
+  <Step title="trim()">
+    Remove whitespace from the beginning and end of the string
+  </Step>
+  
+  <Step title="parse()">
+    Convert the string to the target type (type inference determines what to parse to)
+  </Step>
+  
+  <Step title="expect()">
+    Handle the `Result` type - either unwrap the value or panic with a custom message
+  </Step>
+</Steps>
+
+<Warning>
+`parse()` returns a `Result<T, E>` because parsing can fail. Always handle errors appropriately using `expect()`, `unwrap()`, or proper error handling with `match` or `?`.
+</Warning>
+
+## Type Inference
+
+Rust is smart about inferring types:
+
+```rust
+let x = 5;           // i32 by default
+let y = 2.0;         // f64 by default
+let s = "hello";     // &str
+let owned = String::from("hello");  // String
+```
+
+<Tip>
+While Rust can infer types, explicit type annotations improve code readability and can help catch bugs early.
+</Tip>
+
+## Copy vs Move Types
+
+Understanding which types are `Copy` is crucial for working with ownership:
+
+<Accordion title="Copy Types (Copied, not moved)">
+These types are stored entirely on the stack and implement the `Copy` trait:
+
+- All integer types: `i8`, `i16`, `i32`, `i64`, `i128`, `u8`, `u16`, `u32`, `u64`, `u128`
+- Floating-point types: `f32`, `f64`
+- Boolean: `bool`
+- Character: `char`
+- Tuples containing only `Copy` types: `(i32, i32)`
+
+```rust
+let x = 5;
+let y = x;  // x is copied, both x and y are valid
+println!("{}, {}", x, y);  // ✅ Works!
+```
+</Accordion>
+
+<Accordion title="Move Types (Ownership transferred)">
+These types are stored on the heap and do NOT implement `Copy`:
+
+- `String`
+- `Vec<T>`
+- Any type that owns heap data
+- Tuples containing any non-`Copy` type
+
+```rust
+let s1 = String::from("hello");
+let s2 = s1;  // s1 is moved, s1 is no longer valid
+// println!("{}", s1);  // ❌ Error!
+println!("{}", s2);     // ✅ Works!
+```
+</Accordion>
+
+## Quick Reference Table
+
+| Type | Example | Copy? | Size | Use Case |
+|------|---------|-------|------|----------|
+| `&str` | `"hello"` | Yes | 2 words | String literals, borrowed strings |
+| `String` | `String::from("hi")` | No | 3 words + heap | Owned, mutable strings |
+| `i32` | `42` | Yes | 4 bytes | General-purpose integers |
+| `u32` | `42` | Yes | 4 bytes | Non-negative integers |
+| `f64` | `3.14` | Yes | 8 bytes | Floating-point numbers |
+| `char` | `'A'` | Yes | 4 bytes | Unicode characters |
+| `bool` | `true` | Yes | 1 byte | Boolean values |
+| `[i32; 5]` | `[1,2,3,4,5]` | Yes* | 20 bytes | Fixed-size arrays |
+| `(i32, String)` | `(1, String::from("hi"))` | No | Varies | Mixed-type tuples |
+
+*Arrays are `Copy` only if their element type is `Copy`
+
+## Key Takeaways
+
+<Tip>
+- Rust has rich type system with both primitive and compound types
+- String types: Use `&str` for borrowed strings, `String` for owned strings
+- Choose integer types based on your value range and signedness needs
+- `char` is 4 bytes and supports full Unicode
+- Tuples can mix types; arrays must be homogeneous
+- Use `parse()` for converting strings to other types
+- Understanding `Copy` vs move semantics is essential for ownership
+</Tip>
+
+## Next Steps
+
+- [Ownership](/concepts/ownership) - Learn how ownership works with different types
+- [Rock Paper Scissors](/projects/rock-paper-scissors) - Apply data types in a real project

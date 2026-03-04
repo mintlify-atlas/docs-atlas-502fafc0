@@ -1,0 +1,134 @@
+---
+title: 'Ownership'
+description: 'Understanding Rust ownership system and memory management'
+---
+
+# Ownership in Rust
+
+Ownership is Rust's most unique feature that enables memory safety without a garbage collector. Every value in Rust has a single owner, and when the owner goes out of scope, the value is dropped.
+
+## The Three Rules of Ownership
+
+<Steps>
+  <Step title="Each value has a single owner">
+    Every value in Rust has exactly one variable that owns it.
+  </Step>
+  
+  <Step title="Only one owner at a time">
+    There can only be one owner of a value at any given time.
+  </Step>
+  
+  <Step title="Value is dropped when owner goes out of scope">
+    When the owner goes out of scope, the value is automatically cleaned up.
+  </Step>
+</Steps>
+
+## Move Semantics
+
+When you assign a value to another variable, ownership is **moved** by default for heap-allocated types like `String`.
+
+```rust
+let my_name = String::from("Maysam");
+println!("(L-3) my name is {my_name}");
+
+let new_variable= my_name;
+// my_name.push_str("hi_name"); // can't use my_name here!, value moved in line 5
+// println!("{my_name}");       // can't use my_name here!, value moved in line 5
+println!("(L-8) my name from new variable: {new_variable}");
+```
+
+<Warning>
+After the move on line 5, `my_name` is no longer valid. Attempting to use it will result in a compile-time error. This prevents use-after-free bugs!
+</Warning>
+
+### What Happens During a Move?
+
+1. The ownership of the `String` value transfers from `my_name` to `new_variable`
+2. `my_name` becomes invalid and cannot be used anymore
+3. Only `new_variable` can now access the string data
+4. When `new_variable` goes out of scope, the memory is freed
+
+## Cloning Values
+
+If you want to keep using the original variable, you need to explicitly **clone** the data:
+
+```rust
+let my_name = String::from("Maysam");
+let _new_variable = my_name.clone();
+
+println!("(L-15) I can use my_name here: {my_name}");
+```
+
+<Note>
+Cloning creates a deep copy of the data. Both `my_name` and `_new_variable` now own separate copies of the string "Maysam" in memory.
+</Note>
+
+## Move vs Clone: When to Use Each
+
+<Accordion title="When values are moved">
+  - **Heap-allocated types** like `String`, `Vec`, `Box`, etc.
+  - Assignment: `let b = a;`
+  - Passing to functions: `some_function(a);`
+  - Returning from functions
+  
+  After a move, the original variable is invalidated.
+</Accordion>
+
+<Accordion title="When values are copied (not moved)">
+  - **Stack-only types** that implement the `Copy` trait
+  - Integers: `i32`, `u32`, `i8`, etc.
+  - Floats: `f32`, `f64`
+  - Booleans: `bool`
+  - Characters: `char`
+  - Tuples containing only `Copy` types
+  
+  These types are copied automatically, and the original remains valid.
+</Accordion>
+
+<Accordion title="When to use clone()">
+  - When you need both variables to own their own copy of the data
+  - When you want to pass data to a function but still use it afterwards
+  - Be aware: cloning can be expensive for large data structures
+</Accordion>
+
+## Common Ownership Mistakes
+
+<Warning>
+**Mistake #1: Using a value after moving it**
+
+```rust
+let s = String::from("hello");
+let s2 = s;
+println!("{}", s); // ❌ Error! s is no longer valid
+```
+
+**Solution:** Clone the value or use references (borrowing)
+</Warning>
+
+<Warning>
+**Mistake #2: Assuming all types move**
+
+```rust
+let x = 5;
+let y = x;
+println!("{}", x); // ✅ This works! i32 implements Copy
+```
+
+Primitive types are copied, not moved.
+</Warning>
+
+## Key Takeaways
+
+<Tip>
+- Ownership prevents memory bugs like use-after-free and double-free
+- Moves transfer ownership; the original variable becomes invalid
+- Clone creates a deep copy; both variables remain valid
+- Primitive types implement `Copy` and don't move
+- Understanding ownership is crucial for writing safe Rust code
+</Tip>
+
+## Next Steps
+
+Now that you understand ownership, learn about:
+- [Data Types](/concepts/data-types) - Which types are `Copy` and which are not
+- [Rock Paper Scissors](/projects/rock-paper-scissors) - Apply ownership concepts in a real project

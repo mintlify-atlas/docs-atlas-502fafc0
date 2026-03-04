@@ -1,0 +1,295 @@
+---
+title: 'Rock Paper Scissors Game'
+description: 'Build an interactive CLI Rock Paper Scissors game with Rust'
+---
+
+## Overview
+
+This project implements a classic Rock Paper Scissors game as an interactive command-line application. The game allows players to compete against the computer in unlimited rounds, with the computer making random choices using the `rand` crate.
+
+<Note>
+This project demonstrates fundamental Rust concepts including user input handling, random number generation, pattern matching, and control flow.
+</Note>
+
+## What You'll Learn
+
+- Reading and parsing user input with `std::io`
+- Generating random numbers with the `rand` crate
+- Using loops for continuous gameplay
+- Pattern matching with `match` expressions
+- Error handling with `unwrap_or_else`
+- String manipulation and comparison
+
+## Running the Game
+
+<Steps>
+  <Step title="Navigate to the project directory">
+    ```bash
+    cd 02-rock_paper_scissors
+    ```
+  </Step>
+  
+  <Step title="Run the game">
+    ```bash
+    cargo run
+    ```
+  </Step>
+  
+  <Step title="Play the game">
+    Enter 1, 2, or 3 to make your choice, or type "exit" to quit.
+  </Step>
+</Steps>
+
+## Example Gameplay
+
+```
+Please Enter a number
+1 for 🗿 Rock!
+2 for 📄 Paper!
+3 for ✂️  Scissors!
+1
+Victory — your move beats the computer. computer chose ✂️  Scissors
+------------------------------------------------
+Please Enter a number
+1 for 🗿 Rock!
+2 for 📄 Paper!
+3 for ✂️  Scissors!
+2
+Defeat — the computer outplayed you. computer chose ✂️  Scissors
+------------------------------------------------
+Please Enter a number
+1 for 🗿 Rock!
+2 for 📄 Paper!
+3 for ✂️  Scissors!
+exit
+```
+
+## Dependencies
+
+The project uses the `rand` crate for generating random computer choices:
+
+```toml Cargo.toml
+[dependencies]
+rand = "0.9.2"
+```
+
+<Tip>
+The `rand` crate is one of the most popular Rust crates for random number generation. Version 0.9.2 introduces the `random_range` function for cleaner syntax.
+</Tip>
+
+## Code Architecture
+
+### Main Game Loop
+
+The game runs in an infinite loop, continuously prompting for user input until the player types "exit":
+
+```rust
+fn main() {
+    loop {
+        let mut user_input = String::new();
+        let computer = rand::random_range(1..=3);
+        println!("Please Enter a number");
+        println!("1 for 🗿 Rock!");
+        println!("2 for 📄 Paper!");
+        println!("3 for ✂️  Scissors!");
+
+        // read the input
+        io::stdin().read_line(&mut user_input).unwrap();
+        user_input = user_input.trim().to_lowercase();
+
+        if user_input == String::from("exit") {
+            break;
+        }
+
+        let user_input: i8 = user_input.parse().unwrap_or_else(|error| {
+            println!("{error}");
+            0
+        });
+
+        println!("{}", check_values(&computer, &user_input));
+
+        println!("------------------------------------------------");
+    }
+}
+```
+
+<Accordion title="Understanding the Main Loop">
+  **Key components:**
+  
+  - `loop` creates an infinite loop that continues until `break` is called
+  - `rand::random_range(1..=3)` generates a random number between 1 and 3 (inclusive)
+  - `io::stdin().read_line()` reads user input from the terminal
+  - `trim().to_lowercase()` cleans the input by removing whitespace and converting to lowercase
+  - `parse().unwrap_or_else()` attempts to parse the string as an integer, defaulting to 0 on error
+  - The game checks for "exit" to break out of the loop
+</Accordion>
+
+### Checking Values and Displaying Results
+
+The `check_values` function determines the game outcome and formats the result message:
+
+```rust
+fn check_values(computer: &i8, user: &i8) -> String {
+    let emoji = match computer {
+        1 => "🗿 Rock",
+        2 => "📄 Paper",
+        3 => "✂️  Scissors",
+        _ => "Invalid Move by Computer",
+    };
+    if user == computer {
+        format!("Draw — both players chose the {emoji}")
+    } else if check_game(computer, user) {
+        format!("Victory — your move beats the computer. computer chose {emoji}")
+    } else {
+        format!("Defeat — the computer outplayed you. computer chose {emoji}")
+    }
+}
+```
+
+<Note>
+The `match` expression is used to map numeric values to their corresponding emojis and names. The underscore `_` pattern handles any unexpected values.
+</Note>
+
+### Game Logic
+
+The `check_game` function implements the Rock Paper Scissors rules:
+
+```rust
+fn check_game(computer: &i8, user: &i8) -> bool {
+    if (*computer == 3 && *user == 1)
+        || (*computer == 2 && *user == 3)
+        || (*computer == 1 && *user == 2)
+    {
+        true
+    } else {
+        false
+    }
+}
+```
+
+**Win conditions:**
+- Rock (1) beats Scissors (3)
+- Scissors (3) beats Paper (2)
+- Paper (2) beats Rock (1)
+
+<Tip>
+The function uses the dereference operator `*` to access the actual values from the references passed as parameters.
+</Tip>
+
+## Rust Concepts Demonstrated
+
+<CodeGroup>
+```rust "User Input"
+let mut user_input = String::new();
+io::stdin().read_line(&mut user_input).unwrap();
+user_input = user_input.trim().to_lowercase();
+```
+
+```rust "Random Generation"
+use rand;
+let computer = rand::random_range(1..=3);
+```
+
+```rust "Pattern Matching"
+let emoji = match computer {
+    1 => "🗿 Rock",
+    2 => "📄 Paper",
+    3 => "✂️  Scissors",
+    _ => "Invalid Move by Computer",
+};
+```
+
+```rust "Error Handling"
+let user_input: i8 = user_input.parse().unwrap_or_else(|error| {
+    println!("{error}");
+    0
+});
+```
+
+```rust "References"
+fn check_values(computer: &i8, user: &i8) -> String {
+    // Function borrows values instead of taking ownership
+}
+```
+</CodeGroup>
+
+## Key Takeaways
+
+<Steps>
+  <Step title="Infinite Loops with Exit Conditions">
+    The `loop` keyword creates an infinite loop, and the `break` statement exits when the user types "exit".
+  </Step>
+  
+  <Step title="Input Validation">
+    Using `unwrap_or_else` provides graceful error handling when parsing user input, defaulting to 0 for invalid entries.
+  </Step>
+  
+  <Step title="Pattern Matching">
+    The `match` expression provides a clean way to handle multiple conditions and map values to results.
+  </Step>
+  
+  <Step title="Reference Borrowing">
+    Functions use references (`&i8`) to borrow values without taking ownership, allowing the main function to retain access.
+  </Step>
+  
+  <Step title="String Formatting">
+    The `format!` macro creates formatted strings with variable interpolation using `{variable}` syntax.
+  </Step>
+</Steps>
+
+## Possible Enhancements
+
+<Accordion title="Track Win/Loss Statistics">
+Add counters to track the number of wins, losses, and draws throughout the game session.
+
+```rust
+let mut wins = 0;
+let mut losses = 0;
+let mut draws = 0;
+```
+</Accordion>
+
+<Accordion title="Add Input Validation">
+Improve error handling to re-prompt the user when invalid input is entered instead of defaulting to 0.
+
+```rust
+let user_input: i8 = match user_input.parse() {
+    Ok(num) if num >= 1 && num <= 3 => num,
+    _ => {
+        println!("Invalid input! Please enter 1, 2, or 3.");
+        continue;
+    }
+};
+```
+</Accordion>
+
+<Accordion title="Support Text Input">
+Allow players to type "rock", "paper", or "scissors" instead of just numbers.
+
+```rust
+let choice = match user_input.as_str() {
+    "rock" | "1" => 1,
+    "paper" | "2" => 2,
+    "scissors" | "3" => 3,
+    _ => 0,
+};
+```
+</Accordion>
+
+<Accordion title="Add Best-of-N Rounds">
+Implement a tournament mode where the player competes in a best-of-3 or best-of-5 series.
+</Accordion>
+
+## Next Steps
+
+After completing this project, you can:
+
+- Add more complex game modes (best-of-3, tournaments)
+- Implement score tracking and statistics
+- Create a Rock Paper Scissors Lizard Spock variant
+- Build a graphical interface using a crate like `iced` or `egui`
+- Add multiplayer support over a network
+
+<Note>
+This project provides a solid foundation in Rust basics. The concepts learned here—input handling, random generation, and pattern matching—are essential for more complex applications.
+</Note>

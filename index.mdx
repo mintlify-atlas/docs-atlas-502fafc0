@@ -1,97 +1,165 @@
 ---
-title: "Introduction"
-description: "Welcome to the new home for your documentation"
+title: "Rust Lab"
+mode: "custom"
 ---
 
-## Setting up
+<div className="relative overflow-hidden bg-gradient-to-br from-[#CE422B] via-[#A33E2C] to-[#8B2E1F] dark:from-[#CE422B] dark:via-[#A33E2C] dark:to-[#8B2E1F] py-20">
+  <div className="max-w-6xl mx-auto px-6">
+    <div className="flex flex-col lg:flex-row items-center gap-12">
+      <div className="flex-1 space-y-6">
+        <h1 className="text-5xl lg:text-6xl font-bold text-white">
+          Master Rust Programming
+        </h1>
+        <p className="text-xl text-white/90 max-w-2xl">
+          A hands-on learning journey through Rust's core concepts, from ownership and borrowing to building interactive CLI applications.
+        </p>
+        <div className="flex flex-wrap gap-4">
+          <a
+            href="/quickstart"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#CE422B] font-semibold rounded-lg hover:bg-white/90 transition-colors"
+          >
+            Get Started
+          </a>
+          <a
+            href="/concepts/ownership"
+            className="inline-flex items-center gap-2 px-6 py-3 border-2 border-white/30 bg-white/10 text-white font-semibold rounded-lg hover:bg-white/20 transition-colors"
+          >
+            Explore Concepts
+          </a>
+        </div>
+      </div>
+      <div className="flex-1 flex justify-center">
+        <div className="text-9xl">🦀</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-Get your documentation site up and running in minutes.
+<div className="mt-16 mb-16 max-w-5xl mx-auto px-6">
+  <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-3">Quick Start</h2>
+  <p className="text-base text-gray-600 dark:text-gray-400 mb-8">Get up and running with Rust Lab in minutes</p>
+  
+  <Steps>
+    <Step title="Clone the repository">
+      Start by cloning the Rust Lab repository to your local machine.
+      
+      ```bash
+      git clone https://github.com/Ghostmaysam1/rust-lab.git
+      cd rust-lab
+      ```
+    </Step>
+    
+    <Step title="Explore the projects">
+      Navigate to any of the learning projects and examine the code.
+      
+      ```bash
+      cd 00-ownership
+      cat src/main.rs
+      ```
+      
+      Each project demonstrates specific Rust concepts with practical, runnable examples.
+    </Step>
+    
+    <Step title="Run the examples">
+      Compile and run any project using Cargo, Rust's build tool.
+      
+      ```bash
+      cargo run
+      ```
+      
+      <Note>
+        Make sure you have Rust installed on your system. Visit [rustup.rs](https://rustup.rs) to install Rust and Cargo.
+      </Note>
+    </Step>
+  </Steps>
+</div>
 
-<Card
-  title="Start here"
-  icon="rocket"
-  href="/quickstart"
-  horizontal
->
-  Follow our three step quickstart guide.
-</Card>
-
-## Make it yours
-
-Design a docs site that looks great and empowers your users.
-
-<Columns cols={2}>
-  <Card
-    title="Edit locally"
-    icon="pen-to-square"
-    href="/development"
-  >
-    Edit your docs locally and preview them in real time.
-  </Card>
-  <Card
-    title="Customize your site"
-    icon="palette"
-    href="/essentials/settings"
-  >
-    Customize the design and colors of your site to match your brand.
-  </Card>
+<div className="mt-16 mb-16 max-w-5xl mx-auto px-6">
+  <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-3">Explore by Topic</h2>
+  <p className="text-base text-gray-600 dark:text-gray-400 mb-8">Dive into Rust's fundamental concepts and practical projects</p>
+  
+  <CardGroup cols={2}>
     <Card
-    title="Set up navigation"
-    icon="map"
-    href="/essentials/navigation"
-  >
-    Organize your docs to help users find what they need and succeed with your product.
-  </Card>
-  <Card
-    title="API documentation"
-    icon="terminal"
-    href="/api-reference/introduction"
-  >
-    Auto-generate API documentation from OpenAPI specifications.
-  </Card>
-</Columns>
+      title="Ownership"
+      icon="lock"
+      href="/concepts/ownership"
+    >
+      Learn how Rust's ownership system prevents memory errors at compile time through move semantics and borrowing.
+    </Card>
+    <Card
+      title="Data Types"
+      icon="database"
+      href="/concepts/data-types"
+    >
+      Explore Rust's type system including strings, integers, floats, tuples, arrays, and type conversions.
+    </Card>
+    <Card
+      title="Rock Paper Scissors"
+      icon="hand-fist"
+      href="/projects/rock-paper-scissors"
+    >
+      Build an interactive CLI game demonstrating user input, random number generation, and pattern matching.
+    </Card>
+    <Card
+      title="Learning Path"
+      icon="graduation-cap"
+      href="/resources/learning-path"
+    >
+      Follow a structured path through the projects to build your Rust skills progressively.
+    </Card>
+  </CardGroup>
+</div>
 
-## Create beautiful pages
+<div className="mt-16 mb-16 max-w-5xl mx-auto px-6">
+  <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-3">Key Features</h2>
+  <p className="text-base text-gray-600 dark:text-gray-400 mb-8">What makes Rust Lab an effective learning resource</p>
+  
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="p-6 rounded-xl border border-gray-200 dark:border-[#27272a] bg-gray-50 dark:bg-[#1a1d27] hover:border-[#CE422B] dark:hover:border-[#CE422B] transition-colors">
+      <div className="text-4xl mb-4">🔒</div>
+      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Ownership & Borrowing</h3>
+      <p className="text-gray-600 dark:text-gray-400">
+        Master Rust's unique ownership model with clear examples showing move semantics, cloning, and borrowing rules.
+      </p>
+    </div>
+    
+    <div className="p-6 rounded-xl border border-gray-200 dark:border-[#27272a] bg-gray-50 dark:bg-[#1a1d27] hover:border-[#CE422B] dark:hover:border-[#CE422B] transition-colors">
+      <div className="text-4xl mb-4">📊</div>
+      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Type System Deep Dive</h3>
+      <p className="text-gray-600 dark:text-gray-400">
+        Comprehensive examples of Rust's primitive and compound types, including strings, numbers, chars, tuples, and arrays.
+      </p>
+    </div>
+    
+    <div className="p-6 rounded-xl border border-gray-200 dark:border-[#27272a] bg-gray-50 dark:bg-[#1a1d27] hover:border-[#CE422B] dark:hover:border-[#CE422B] transition-colors">
+      <div className="text-4xl mb-4">🎮</div>
+      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Interactive Projects</h3>
+      <p className="text-gray-600 dark:text-gray-400">
+        Build real applications like the Rock Paper Scissors game to practice user input, control flow, and logic.
+      </p>
+    </div>
+    
+    <div className="p-6 rounded-xl border border-gray-200 dark:border-[#27272a] bg-gray-50 dark:bg-[#1a1d27] hover:border-[#CE422B] dark:hover:border-[#CE422B] transition-colors">
+      <div className="text-4xl mb-4">🚀</div>
+      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Hands-On Learning</h3>
+      <p className="text-gray-600 dark:text-gray-400">
+        Every concept is demonstrated with working code you can run, modify, and experiment with locally.
+      </p>
+    </div>
+  </div>
+</div>
 
-Everything you need to create world-class documentation.
-
-<Columns cols={2}>
-  <Card
-    title="Write with MDX"
-    icon="pen-fancy"
-    href="/essentials/markdown"
-  >
-    Use MDX to style your docs pages.
-  </Card>
-  <Card
-    title="Code samples"
-    icon="code"
-    href="/essentials/code"
-  >
-    Add sample code to demonstrate how to use your product.
-  </Card>
-  <Card
-    title="Images"
-    icon="image"
-    href="/essentials/images"
-  >
-    Display images and other media.
-  </Card>
-  <Card
-    title="Reusable snippets"
-    icon="recycle"
-    href="/essentials/reusable-snippets"
-  >
-    Write once and reuse across your docs.
-  </Card>
-</Columns>
-
-## Need inspiration?
-
-<Card
-  title="See complete examples"
-  icon="stars"
-  href="https://mintlify.com/customers"
->
-  Browse our showcase of exceptional documentation sites.
-</Card>
+<div className="mt-16 mb-16 max-w-5xl mx-auto px-6">
+  <div className="p-8 rounded-2xl bg-gradient-to-r from-[#CE422B] to-[#A33E2C] dark:from-[#CE422B] dark:to-[#A33E2C]">
+    <h2 className="text-3xl font-bold text-white mb-3">Ready to Start Learning?</h2>
+    <p className="text-lg text-white/90 mb-6 max-w-2xl">
+      Begin your Rust journey with our quickstart guide or dive straight into the core concepts.
+    </p>
+    <a
+      href="/quickstart"
+      className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#CE422B] font-semibold rounded-lg hover:bg-white/90 transition-colors"
+    >
+      Start Learning Now
+    </a>
+  </div>
+</div>

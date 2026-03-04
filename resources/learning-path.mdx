@@ -1,0 +1,147 @@
+---
+title: 'Learning Path'
+description: 'A structured approach to mastering Rust through hands-on projects'
+---
+
+## Overview
+
+This learning path guides you through the Rust Lab projects in an order designed to build your understanding progressively. Each project introduces key Rust concepts while reinforcing what you've already learned.
+
+<Note>
+  Take your time with each project. Understanding the fundamentals deeply will make advanced topics much easier to grasp.
+</Note>
+
+## Recommended Learning Sequence
+
+<Steps>
+  <Step title="Start with Ownership Basics">
+    Begin with the [Ownership concept](/concepts/ownership) to understand Rust's most distinctive feature.
+    
+    **Why start here?**
+    - Ownership is the foundation of Rust's memory safety guarantees
+    - Understanding borrowing and lifetimes early prevents confusion later
+    - This concept influences how you'll think about all Rust code
+    
+    **What you'll learn:**
+    - How Rust manages memory without garbage collection
+    - The rules of ownership, borrowing, and references
+    - Why the compiler sometimes rejects your code
+    
+    **Tips:**
+    - Don't rush through compiler errors - read them carefully
+    - Experiment with breaking the ownership rules to see what happens
+    - Try modifying the examples before moving to the exercises
+  </Step>
+
+  <Step title="Explore Data Types">
+    Move to the [Data Types concept](/concepts/data-types) to learn how Rust represents and manipulates data.
+    
+    **Why this comes next?**
+    - You now understand ownership, so you can appreciate how types interact with it
+    - Data types are essential for any real program
+    - This builds on ownership concepts with structs and enums
+    
+    **What you'll learn:**
+    - Primitive types (integers, floats, booleans, chars)
+    - Compound types (tuples, arrays)
+    - Custom types with structs and enums
+    - Pattern matching with match expressions
+    
+    **Tips:**
+    - Pay special attention to how enums differ from other languages
+    - Practice pattern matching - it's a superpower in Rust
+    - Understand when to use String vs &str
+  </Step>
+
+  <Step title="Build the Rock-Paper-Scissors Game">
+    Apply your knowledge with the [Rock-Paper-Scissors project](/projects/rock-paper-scissors).
+    
+    **Why finish here?**
+    - Integrates ownership, types, and control flow
+    - Adds practical concepts like error handling and user input
+    - Creates a complete, working program
+    
+    **What you'll learn:**
+    - Handling user input and output
+    - Error handling with Result and Option
+    - Program structure and organization
+    - Random number generation
+    - Game logic implementation
+    
+    **Tips:**
+    - Start with the basic game loop, then add features
+    - Use enums for game choices (Rock, Paper, Scissors)
+    - Practice error handling for invalid input
+    - Consider extending the game with score tracking
+  </Step>
+</Steps>
+
+## Getting the Most Out of Each Project
+
+<CardGroup cols={2}>
+  <Card title="Read First, Code Later" icon="book">
+    Read through the entire concept explanation before starting to code. Understanding the "why" makes the "how" much clearer.
+  </Card>
+  
+  <Card title="Break the Code" icon="wrench">
+    Intentionally introduce errors to see what the compiler tells you. Rust's error messages are incredibly helpful for learning.
+  </Card>
+  
+  <Card title="Extend the Examples" icon="plus">
+    Don't just complete the exercises - try adding your own features. This deepens understanding and builds confidence.
+  </Card>
+  
+  <Card title="Use the Playground" icon="play">
+    Test small code snippets in the [Rust Playground](https://play.rust-lang.org/) to quickly experiment with concepts.
+  </Card>
+</CardGroup>
+
+## Beyond the Basics
+
+Once you've completed these three projects, you'll have a solid foundation in Rust. Here are some next steps:
+
+<Accordion title="Continue Learning">
+  - Work through [The Rust Book](https://doc.rust-lang.org/book/) for comprehensive coverage
+  - Try [Rustlings](https://github.com/rust-lang/rustlings) for more exercises
+  - Build a CLI tool or web service to practice
+  - Explore async programming with Tokio
+  - Dive into systems programming or embedded development
+</Accordion>
+
+<Accordion title="Practice Projects">
+  - **CLI Tool**: Build a command-line utility (file manager, todo app, grep clone)
+  - **Web Server**: Create a REST API with Axum or Actix-web
+  - **Parser**: Write a parser for a simple language or file format
+  - **Systems Tool**: Create a system monitor or network scanner
+  - **Game**: Build a text adventure or terminal game
+</Accordion>
+
+<Accordion title="Join the Community">
+  - [Rust Users Forum](https://users.rust-lang.org/) - Ask questions and share projects
+  - [r/rust](https://reddit.com/r/rust) - Stay updated with community news
+  - [Rust Discord](https://discord.gg/rust-lang) - Real-time help and discussion
+  - Local Rust meetups - Connect with developers in your area
+</Accordion>
+
+## Learning Tips
+
+<Note>
+  **The compiler is your friend.** Rust's compiler errors might seem strict at first, but they're preventing bugs that would be runtime errors in other languages. Learn to read and appreciate them.
+</Note>
+
+### Common Challenges
+
+1. **Fighting the borrow checker**: This is normal! As you internalize ownership rules, it becomes second nature.
+2. **Understanding lifetimes**: Don't worry if this takes time. Many Rust developers find lifetimes challenging initially.
+3. **Choosing the right type**: String vs &str, Vec vs array - this comes with practice.
+
+### Success Strategies
+
+- **Code daily**: Even 30 minutes of consistent practice beats marathon sessions
+- **Read other people's code**: Explore popular Rust projects on GitHub
+- **Solve real problems**: Build tools you'll actually use
+- **Don't give up**: The initial learning curve is steep, but it's worth it
+
+<Card title="Ready to Start?" icon="rocket" href="/concepts/ownership">
+  Begin your Rust journey with the Ownership concept
+</Card>
