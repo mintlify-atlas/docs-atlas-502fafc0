@@ -227,8 +227,15 @@ Here are the Cargo commands you'll use frequently:
     If you're stuck, try copying the error message into a search engine or asking on the [Rust Users Forum](https://users.rust-lang.org/).
   </Accordion>
   
-  <Accordion title="Edition errors">
-    The projects use Rust edition 2024. Make sure your Rust installation is up to date:
+  <Accordion title="Edition configuration">
+    The Cargo.toml files specify `edition = "2024"`. Note that Rust editions are 2015, 2018, and 2021. If you encounter edition-related errors, you may need to update the Cargo.toml to use `edition = "2021"` (the latest stable edition):
+    
+    ```toml
+    [package]
+    edition = "2021"
+    ```
+    
+    Make sure your Rust installation is up to date:
     
     ```bash
     rustup update
